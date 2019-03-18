@@ -1,0 +1,11 @@
+<View
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:tnt="sap.tnt"
+    xmlns:l="sap.ui.layout">
+    <App id="appViewid" />
+    
+  
+</View>
+

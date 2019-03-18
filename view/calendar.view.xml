@@ -1,0 +1,40 @@
+<core:View
+
+	xmlns:t="sap.ui.table"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:tnt="sap.tnt"
+	xmlns:core="sap.ui.core"
+	xmlns:unified="sap.ui.unified"
+	controllerName="newProject.controller.calendar"
+	height="100%">
+
+
+	<PlanningCalendar
+		id="PC1"
+		rows="{path: '/kullanicilar'}"
+		appointmentsVisualization="Filled"
+		appointmentSelect="appointmentFeatures"
+		showEmptyIntervalHeaders="false"
+		showWeekNumbers="true"
+		intervalSelect="appointmentFeatures">
+		<rows>
+			<PlanningCalendarRow
+				title="{/kullanicilar/0/ad} {/kullanicilar/0/soyad}"
+				text="{/kullanicilar/0/email}"
+				appointments="{path : '/kullanicilar/0/appointments', templateShareable: 'true'}"
+				intervalSelect="appointmentFeatures">
+				<appointments>
+					<unified:CalendarAppointment
+						startDate="{start}"
+						endDate="{end}"
+						title="{title}"
+						text="{text}"
+						type="{type}"
+						tentative="false">
+					</unified:CalendarAppointment>
+				</appointments>
+			</PlanningCalendarRow>
+		</rows>
+	</PlanningCalendar>
+</core:View>

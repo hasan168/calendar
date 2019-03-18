@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title>newProject</title>
+  
+  <script
+      src="https://sapui5.hana.ondemand.com/resources//sap-ui-core.js"
+      data-sap-ui-libs='sap.m'
+   
+      data-sap-ui-theme="sap_belize"
+      data-sap-ui-preload="async"
+      data-sap-ui-compatVersion="edge"
+     
+      data-sap-ui-resourceroots='{"newProject": "./"}'>
+  </script>
+ 
+ <script>
+ 
+    sap.ui.getCore().attachInit(function() {
+       new sap.ui.core.ComponentContainer({
+           height: "100%",
+           name: "newProject"
+       }).placeAt("content");
+    });
+    jQuery.sap.require('sap/ui/model/json/JSONModel')
+    var oModel = new sap.ui.model.json.JSONModel(); 
+    sap.ui.getCore().setModel(oModel)
+</script>
+</head>
+<body id="content" >
+</body>
+</html>
