@@ -233,19 +233,6 @@ sap.ui.define([
 									alert("LÜTFEN BOŞ ALANLARI DOLDURUNUZ");
 								}
 								else{
-									// var fetchJson={
-									// 	title:t.bs,
-									// 	text:t.text,
-									// 	stDate: new Date(yaz1+" "+t.stTime),
-									// 	enDate:new Date(yaz2+" "+t.enTime)
-									// }
-									// var changeJson={
-									// 	title:t.uzanti+"/title",
-									// 	text:t.uzanti+"/text",
-									// 	stDate: t.uzanti+"/start",
-									// 	enDate:t.uzanti+"/end"
-									// }
-									// oModel.setProperty(changeJson,fetchJson);
 									oModel.setProperty(t.uzanti+"/title",t.bs);
 									oModel.setProperty(t.uzanti+"/text",t.text);
 									oModel.setProperty(t.uzanti+"/start", new Date(yaz1+" "+t.stTime));
@@ -281,7 +268,7 @@ sap.ui.define([
 									db.transaction(function(tx)
 									{										  
 										tx.executeSql('INSERT INTO kul_randevu3(id, kid, kad, ksoyad, baslik, bast, bitt, yorum) VALUES(?,?,?,?,?,?,?,?)', 
-													[id,t.kid,t.kadi,t.ksoyadi,t.bs,new Date(yaz1+" "+t.stTime),new Date(yaz2+" "+t.enTime),t.text]); 
+											[id,t.kid,t.kadi,t.ksoyadi,t.bs,new Date(yaz1+" "+t.stTime),new Date(yaz2+" "+t.enTime),t.text]); 
 										alert("VERİ EKLENDİ");
 									});
 
