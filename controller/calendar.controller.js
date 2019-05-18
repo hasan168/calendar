@@ -87,7 +87,6 @@ sap.ui.define([
 
 				var isim;
 				var uz;
-				let kapat;
 				if (oAppointment)
 				{				
 					var de=oAppointment.getTitle();
@@ -117,7 +116,6 @@ sap.ui.define([
 						enTime:szaman
 					}
 					isim="GÜNCELLE";
-					kapat="SİL";
 				}
 				else{
 					var oModel = this.getView().getModel();
@@ -143,7 +141,6 @@ sap.ui.define([
 					oModel.setProperty("/bas",bt);
 					oModel.setProperty("/son",st);
 					isim="EKLE";
-					kapat="KAPAT";
 				}
 				oModel.setProperty("/appointment",json);
 
@@ -189,27 +186,34 @@ sap.ui.define([
 						displayFormat:"HH:mm:ss"
 					})
 					],
-					button: new sap.m.Button({
-						text:'TEST'
-					}),
+					customHeader:[
+					new sap.m.Bar({
+						contentRight:[
+						new sap.m.Button({
+							text: "Kapat",
+							type: "Transparent",
+							icon: "sap-icon://sys-cancel",
+							press: function() {
+								dialog.close();
+							}
+						})
+						]
+					})
+					],
 					beginButton: new sap.m.Button({
-						text: kapat,
-						press: function () {
-							if (oAppointment) {
-								var dara=oModel.getProperty(uz+"/id");
-								db.transaction(function(tx)
-								{										  
-									tx.executeSql('DELETE FROM kul_randevu3 WHERE id=?', [dara]);
-									_this.appointmentsList(); 
-									alert("VERİ SİLİNDİ");
-								});
-								oModel.setData(oData);
-								_this.appointmentsList();
-								dialog.close();
-							}
-							else{
-								dialog.close();
-							}
+						text: "SİL",
+						press: function () {							
+							var dara=oModel.getProperty(uz+"/id");
+							db.transaction(function(tx)
+							{										  
+								tx.executeSql('DELETE FROM kul_randevu3 WHERE id=?', [dara]);
+								_this.appointmentsList(); 
+								alert("VERİ SİLİNDİ");
+							});
+							oModel.setData(oData);
+							_this.appointmentsList();
+							
+							dialog.close();
 						}
 					}),
 					endButton: new sap.m.Button({
@@ -284,8 +288,8 @@ sap.ui.define([
 						dialog.destroy();
 					}
 				})
-dialog.open();
-},			
-});
+				dialog.open();
+			},			
+		});
 return PageController;
 });
