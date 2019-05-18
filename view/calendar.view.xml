@@ -8,8 +8,6 @@
 	xmlns:unified="sap.ui.unified"
 	controllerName="newProject.controller.calendar"
 	height="100%">
-
-
 	<PlanningCalendar
 		id="PC1"
 		rows="{path: '/kullanicilar'}"
