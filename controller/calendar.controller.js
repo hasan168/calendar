@@ -1,16 +1,10 @@
 sap.ui.define([
-	'sap/m/MessageBox', 
 	'sap/ui/core/mvc/Controller',
-	'sap/m/Dialog',
-	'sap/m/DatePicker',
-	'sap/m/TimePicker',
-	'sap/m/Input',
-	'sap/m/Text',
 	'sap/ui/model/json/JSONModel',
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator"],
 
-	function(MessageBox, Controller, Dialog, DatePicker, TimePicker, Input, Text, JSONModel, Filter, FilterOperator) {
+	function( Controller,JSONModel, Filter, FilterOperator) {
 		"use strict";
 		
 		var oData = oModel.getData();
@@ -144,43 +138,44 @@ sap.ui.define([
 				}
 				oModel.setProperty("/appointment",json);
 
-				var dialog = new Dialog({
+				var dialog = new sap.m.Dialog({
 					title: 'PLAN '+isim,
 					type: 'Message',
 
 					
 					content:[
-					new Text({ text: 'Başlık' }),
-					new Input({
+					new sap.m.Text({ text: 'Başlık' }),
+					new sap.m.Input({
 						value: "{/appointment/bs}"
 					}),
 
-					new Text({ text: 'Yorum' }),
-					new Input({
+					new sap.m.Text({ text: 'Yorum' }),
+					new sap.m.Input({
 						value:"{/appointment/text}",
 					}),
 
-					new Text({ text: 'Başlangıç Tarihi' }),
-					new DatePicker({
+					new sap.m.Text({ text: 'Başlangıç Tarihi' }),
+					new sap.m.DatePicker({
 						value:"{/appointment/stDate}",
 						valueFormat:"dd.MM.yyyy",
 						displayFormat:"dd.MM.yyyy"
 					}),
-					new Text({ text: 'Bitiş Tarihi' }),
-					new DatePicker({
+					new sap.m.Text({ text: 'Bitiş Tarihi' }),
+					new sap.m.DatePicker({
 						value:"{/appointment/enDate}",
 						valueFormat:"dd.MM.yyyy",
 						displayFormat:"dd.MM.yyyy"
 					}),
 
-					new Text({ text: 'Başlangıç Saati ' }),
-					new TimePicker({
+					new sap.m.Text({ text: 'Başlangıç Saati ' }),
+					new sap.m.TimePicker({
 						value:"{/appointment/stTime}",
 						valueFormat:"HH:mm:ss",
 						displayFormat:"HH:mm:ss"
 					}),
-					new Text({ text: 'Bitiş Saati ' }),
-					new TimePicker({
+					new sap.m.Text({ text: 'Bitiş Saati ' }),
+					new sap.m.
+					TimePicker({
 						value:"{/appointment/enTime}",
 						valueFormat:"HH:mm:ss",
 						displayFormat:"HH:mm:ss"

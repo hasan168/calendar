@@ -1,6 +1,4 @@
 <core:View
-
-
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:tnt="sap.tnt"
@@ -32,6 +30,6 @@
 				</semantic:DetailPage>
 			</detailPages>
 		</SplitContainer>
-	
 
-</core:View>
+
+	</core:View>

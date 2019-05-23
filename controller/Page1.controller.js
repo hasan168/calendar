@@ -1,9 +1,8 @@
 sap.ui.define([
-    'sap/m/MessageBox',
     'sap/ui/core/mvc/Controller',
     'sap/ui/model/json/JSONModel'
     ],
-    function(MessageBox, Controller, JSONModel) {
+    function(Controller, JSONModel) {
         "use strict";
 
         var db;
@@ -23,14 +22,13 @@ sap.ui.define([
             change: function(){
                 var _this=this;
                 if(item==null){
-
                     _this.getView().byId('1').setText('EKLE');
                 }
                 else{
-                 _this.getView().byId('1').setText('GÜNCELLE');
-             }
-         },
-         search:function(oEvent){
+                   _this.getView().byId('1').setText('GÜNCELLE');
+               }
+           },
+           search:function(oEvent){
             var _this=this;
             var veri=oModel.getProperty(oEvent.oSource.oBindingContexts.undefined.sPath);
             oModel.setProperty("/veri",veri)
@@ -81,11 +79,11 @@ sap.ui.define([
             var _this=this;
             db.transaction(function(tx)
             {
-             tx.executeSql('INSERT INTO kullanici(id,ad,soyad,email) VALUES(?,?,?,?)',
+               tx.executeSql('INSERT INTO kullanici(id,ad,soyad,email) VALUES(?,?,?,?)',
                 [id,ad,soyad,email]); 
-             alert("VERİ EKLENDİ");
-             _this.personBring();
-         })                    
+               alert("VERİ EKLENDİ");
+               _this.personBring();
+           })                    
         },
         personBring: function(){
             db.transaction(function(tx)
