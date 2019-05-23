@@ -16,7 +16,7 @@
 				<List  items="{/kul}">
 					
 					<StandardListItem
-						title="{ad} {soyad} {email}" type="Active" press="bul"/>
+						title="{ad} {soyad} {email}" type="Active" press="search"/>
 					</List>
 				</semantic:MasterPage>
 			</masterPages>
@@ -27,7 +27,7 @@
 					<Input value="{/deger}" id="in" placeholder="AD"/>
 					<Input value="{/deger2}" id="in1" placeholder="SOYAD"/>
 					<Input value="{/deger3}" id="in2" placeholder="MAİL"/>
-					<Button text="EKLE" press="vericek" id="1" />
+					<Button text="personInsert" press="personSearch" id="1" />
 					<Button text="Git" press="go" app:param="{/veri/id}"/>
 				</semantic:DetailPage>
 			</detailPages>

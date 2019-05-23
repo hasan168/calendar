@@ -18,9 +18,9 @@ sap.ui.define([
                 db.transaction(function(tx){
                     tx.executeSql('CREATE TABLE IF NOT EXISTS kullanici(id unique,ad,soyad,email)');                
                 })
-                _this.getir();
+                _this.personBring();
             },
-            degistir: function(){
+            change: function(){
                 var _this=this;
                 if(item==null){
 
@@ -30,7 +30,7 @@ sap.ui.define([
                  _this.getView().byId('1').setText('GÜNCELLE');
              }
          },
-         bul:function(oEvent){
+         search:function(oEvent){
             var _this=this;
             var veri=oModel.getProperty(oEvent.oSource.oBindingContexts.undefined.sPath);
             oModel.setProperty("/veri",veri)
@@ -41,9 +41,9 @@ sap.ui.define([
             oModel.setProperty("/deger",d1);
             oModel.setProperty("/deger2",d2);
             oModel.setProperty("/deger3",d3);
-            _this.degistir();
+            _this.change();
         },
-        vericek : function (oEvent){
+        personSearch : function (oEvent){
             var _this = this;
             var id;          
             var s1=oModel.getProperty("/deger");
@@ -65,29 +65,29 @@ sap.ui.define([
                             tx.executeSql('UPDATE kullanici SET ad=?, soyad=?, email=? WHERE id=?',[s1,s2,s3,id],function(ty,result){
                                 alert('VERİ GÜNCELLENDİ');
                                 item=null;
-                                _this.getir();
-                                _this.degistir();
+                                _this.personBring();
+                                _this.change();
                             });
                         })
                     }
                     else
                     {
-                        _this.ekle(id,s1,s2,s3);
+                        _this.personInsert(id,s1,s2,s3);
                     }
                 });
             })
         },
-        ekle : function (id,ad,soyad,email) { 
+        personInsert : function (id,ad,soyad,email) { 
             var _this=this;
             db.transaction(function(tx)
             {
              tx.executeSql('INSERT INTO kullanici(id,ad,soyad,email) VALUES(?,?,?,?)',
                 [id,ad,soyad,email]); 
              alert("VERİ EKLENDİ");
-             _this.getir();
+             _this.personBring();
          })                    
         },
-        getir: function(){
+        personBring: function(){
             db.transaction(function(tx)
             {
                 tx.executeSql('SELECT * FROM kullanici',[],function(ty,result){
