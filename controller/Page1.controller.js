@@ -61,7 +61,7 @@ sap.ui.define([
                     if(result.rows.length>0){
                         db.transaction(function(tx){
                             tx.executeSql('UPDATE kullanici SET ad=?, soyad=?, email=? WHERE id=?',[s1,s2,s3,id],function(ty,result){
-                                alert('VERİ GÜNCELLENDİ');
+                                new sap.m.MessageToast.show("Veri Güncellendi");
                                 item=null;
                                 _this.personBring();
                                 _this.change();
@@ -81,7 +81,7 @@ sap.ui.define([
             {
                tx.executeSql('INSERT INTO kullanici(id,ad,soyad,email) VALUES(?,?,?,?)',
                 [id,ad,soyad,email]); 
-               alert("VERİ EKLENDİ");
+               new sap.m.MessageToast.show("Veri Eklendi");
                _this.personBring();
            })                    
         },
@@ -99,7 +99,7 @@ sap.ui.define([
             var b=this.getView().byId('in1').getValue();
             var c=this.getView().byId('in2').getValue();           
             if(a==""||b==""||c==""){
-                alert("Kullanıcı Giriş Yapınız");
+               new sap.m.MessageToast.show("Kullanıcı Giriş Yapınız");
             }
             else{        
                 var yol =oEvent.getSource();

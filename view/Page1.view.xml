@@ -25,7 +25,7 @@
 					<Input value="{/deger}" id="in" placeholder="AD"/>
 					<Input value="{/deger2}" id="in1" placeholder="SOYAD"/>
 					<Input value="{/deger3}" id="in2" placeholder="MAİL"/>
-					<Button text="personInsert" press="personSearch" id="1" />
+					<Button text="Ekle" press="personSearch" id="1" />
 					<Button text="Git" press="go" app:param="{/veri/id}"/>
 				</semantic:DetailPage>
 			</detailPages>
