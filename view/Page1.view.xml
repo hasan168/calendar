@@ -1,35 +1,28 @@
-<core:View
-	xmlns="sap.m"
-	xmlns:l="sap.ui.layout"
-	xmlns:tnt="sap.tnt"
-	xmlns:core="sap.ui.core"
-	controllerName="newProject.controller.Page1"
-	xmlns:semantic="sap.m.semantic"
-	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-	height="100%">
+<core:View xmlns="sap.m" 
+	xmlns:l="sap.ui.layout" 
+	xmlns:tnt="sap.tnt" 
+	xmlns:core="sap.ui.core" controllerName="newProject.controller.Page1" 
+	xmlns:semantic="sap.m.semantic" 
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" height="100%">
 
 	<SplitContainer>
 		<masterPages>
 			<semantic:MasterPage title="Kullanıcılar">
-				<List  items="{/kul}">
-					
-					<StandardListItem
-						title="{ad} {soyad} {email}" type="Active" press="search"/>
-					</List>
-				</semantic:MasterPage>
-			</masterPages>
-			<detailPages>
-				<semantic:DetailPage
-					title="Kullanıcı Kayıt">
-
-					<Input value="{/deger}" id="in" placeholder="AD"/>
-					<Input value="{/deger2}" id="in1" placeholder="SOYAD"/>
-					<Input value="{/deger3}" id="in2" placeholder="MAİL"/>
-					<Button text="Ekle" press="personSearch" id="1" />
-					<Button text="Git" press="go" app:param="{/veri/id}"/>
-				</semantic:DetailPage>
-			</detailPages>
-		</SplitContainer>
-
-
-	</core:View>
+				<List id ="lst" items="{/kul}">
+					<StandardListItem title="{ad} {soyad}" description="{email}" type="Navigation" press="search"/>
+				</List>
+			</semantic:MasterPage>
+		</masterPages>
+		<detailPages>
+			<semantic:DetailPage title="Kullanıcı Kayıt">
+				<!-- <RadioButton groupName="GroupA" text="Option 1"/>
+				<RadioButton groupName="GroupA" text="Option 2"/> -->
+				<Input value="{/deger}" id="in" placeholder="AD"/>
+				<Input value="{/deger2}" id="in1" placeholder="SOYAD"/>
+				<Input value="{/deger3}" id="in2" placeholder="MAİL"/>
+				<Button text="Ekle" press="personSearch" id="1" />
+				<Button text="Git" press="go" app:param="{/veri/id}"/>
+			</semantic:DetailPage>
+		</detailPages>
+	</SplitContainer>
+</core:View>

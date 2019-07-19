@@ -22,10 +22,10 @@ sap.ui.define([
             change: function(){
                 var _this=this;
                 if(item==null){
-                    _this.getView().byId('1').setText('EKLE');
+                    _this.getView().byId('1').setText('Ekle');
                 }
                 else{
-                   _this.getView().byId('1').setText('GÜNCELLE');
+                   _this.getView().byId('1').setText('Güncelle');
                }
            },
            search:function(oEvent){
@@ -89,7 +89,8 @@ sap.ui.define([
             db.transaction(function(tx)
             {
                 tx.executeSql('SELECT * FROM kullanici',[],function(ty,result){
-                    oModel.setProperty("/kul",result.rows);
+                    var kulList = Object.assign([], result.rows)
+                    oModel.setProperty("/kul", kulList);
                 }); 
             }) 
         }, 
